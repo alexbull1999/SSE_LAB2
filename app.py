@@ -55,7 +55,7 @@ def query():
     result = process_query(query_param)
 
     # Return the result as plain text
-    return Response(result, mimetype="text/plain")
+    return result
 
 
 if __name__ == "__main__":
