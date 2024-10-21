@@ -15,6 +15,21 @@ jobs:
       - name: Run flake8
         run: flake8 .
 
+  unit-tests:
+    runs-on: ubuntu-latest
+    needs: python-formatting
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.12
+      - name: Install dependencies
+        run: pip install pytest
+      - name: Run tests
+        run: pytest app_test.py
+
 
   deploy-to-impaas:
     needs: python-formatting
@@ -29,5 +44,7 @@ jobs:
           app-name: alexmiriamapp
           deployment-token: ${{ secrets.IMPAAS_DEPLOY_TOKEN }}
           method: PLATFORM
+
+
 
 
