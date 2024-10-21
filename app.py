@@ -46,16 +46,17 @@ def process_query(query):
         return "Unknown"
 
 
-@app.route('/query', methods=['GET'])
+@app.route("/query", methods=["GET"])
 def query():
     # Get the 'q' query parameter from the request
-    query_param = request.args.get('q')
-    
+    query_param = request.args.get("q")
+
     # Process the query using the existing function
     result = process_query(query_param)
-    
-    # Return the result as plain text
-    return Response(result, mimetype='text/plain')
 
-if __name__ == '__main__':
+    # Return the result as plain text
+    return Response(result, mimetype="text/plain")
+
+
+if __name__ == "__main__":
     app.run(debug=True)
