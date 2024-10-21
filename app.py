@@ -36,3 +36,10 @@ def submit():
         return render_template(
             "error.html", name=input_name, animal=input_animal
         )
+
+def process_query(query):
+    # Define responses based on the input query
+    if query.lower() == "dinosaurs":
+        return "Dinosaurs ruled the Earth 200 million years ago"
+    else:
+        return "Unknown"
