@@ -37,6 +37,7 @@ def submit():
             "error.html", name=input_name, animal=input_animal
         )
 
+
 def process_query(query):
     # Define responses based on the input query
     if query.lower() == "dinosaurs":
