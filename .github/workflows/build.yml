@@ -27,6 +27,8 @@ jobs:
           python-version: 3.12
       - name: Install dependencies
         run: pip install pytest
+      - name: Install Flask
+        run: pip install Flask
       - name: Run tests
         run: pytest app_test.py
 
