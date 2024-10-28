@@ -42,6 +42,8 @@ def process_query(query):
     # Define responses based on the input query
     if query.lower() == "dinosaurs":
         return "Dinosaurs ruled the Earth 200 million years ago"
+		elif query.lower() == "what is your name":
+				return "AlexTim"
     else:
         return "Unknown"
 
@@ -60,3 +62,5 @@ def query():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
+
