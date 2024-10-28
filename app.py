@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request
+import re
 
 app = Flask(__name__)
 
@@ -40,17 +41,26 @@ def submit():
 
 def process_query(query):
     # Define responses based on the input query
+    numbers = extract_numbers_from_query(query)
+
     if query.lower() == "dinosaurs":
         return "Dinosaurs ruled the Earth 200 million years ago"
+    if "plus" in query.lower():
+        return str(sum(numbers))
     if "name" in query.lower():
         return "AlexTim"
     return "Unknown"
 
 
+def extract_numbers_from_query(query):
+    numbers = re.findall(r"\d+", query)
+    return list(map(int, numbers))
+
+
 @app.route("/query", methods=["GET"])
 def query():
     # Get the 'q' query parameter from the request
-    query_param = request.args.get("q")
+    query_param = request.args.get("q", " ")
 
     # Process the query using the existing function
     result = process_query(query_param)
