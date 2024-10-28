@@ -44,3 +44,8 @@ def both_square_and_cube():
         )
         == "729"
     )
+
+
+def subtract_two_numbers():
+    assert process_query("10 minus 5") == "5"
+    assert process_query("20 minus 10") == "10"

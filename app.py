@@ -47,6 +47,8 @@ def process_query(query):
         return "Dinosaurs ruled the Earth 200 million years ago"
     if "plus" in query.lower():
         return str(sum(numbers))
+    if "minus" in query.lower():
+        return str(numbers[0] - numbers[1])
     if "largest" in query.lower():
         return str(max(numbers))
     if "multiplied" in query.lower():
