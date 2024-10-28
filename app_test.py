@@ -13,4 +13,4 @@ def test_does_not_know_about_asteroids():
 
 
 def test_query_about_name():
-	assert process_query("what is your name?") == "AlexTim"
+    assert process_query("what is your name?") == "AlexTim"
