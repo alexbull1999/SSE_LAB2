@@ -24,3 +24,8 @@ def test_addition_two_numbers():
 def largest_of_three_number():
     assert process_query("largest: 67, 46, 1") == "67"
     assert process_query("largest: 2, 5, 10") == "10"
+
+
+def multiply_two_numbers():
+    assert process_query("5 multiplied 5") == "25"
+    assert process_query("7 multiplied multiplied 9") == "63"
