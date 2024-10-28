@@ -53,6 +53,10 @@ def process_query(query):
         return str(max(numbers))
     if "multiplied" in query.lower():
         return str(numbers[0] * numbers[1])
+    if "divided" in query.lower():
+        return str(numbers[0] / numbers[1])
+    if "power" in query.lower():
+        return str(numbers[0] ** numbers[1])
     if "name" in query.lower():
         return "AlexTim"
     if "square" in query.lower():

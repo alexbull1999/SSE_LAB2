@@ -60,3 +60,11 @@ def subtract_two_numbers():
 def is_prime_numbers():
     assert process_query("primes: 33, 78, 31, 23, 97") == "31, 23, 97"
     assert process_query("primes: 15, 9, 11, 19, 5") == "11, 19, 5"
+
+
+def divide_two_numbers():
+    assert process_query("25 divided by 5") == "5"
+
+
+def to_the_power_of():
+    assert process_query("10 to the power of 2") == "100"
