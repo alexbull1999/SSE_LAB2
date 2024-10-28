@@ -95,8 +95,8 @@ def is_prime(num):
         return False
 
     # Check for factors from 5 to the square root of num
-    for i in range(5, int(num**0.5) + 1, 6):
-        if num % i == 0 or num % (i + 2) == 0:
+    for i in range(5, int(num**0.5) + 1):
+        if num % i == 0:
             return False
     return True
 

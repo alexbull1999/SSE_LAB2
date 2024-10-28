@@ -60,6 +60,7 @@ def subtract_two_numbers():
 def is_prime_numbers():
     assert process_query("primes: 33, 78, 31, 23, 97") == "31, 23, 97"
     assert process_query("primes: 15, 9, 11, 19, 5") == "11, 19, 5"
+    assert process_query("primes: 21, 41, 4, 42, 88") == "41"
 
 
 def divide_two_numbers():
