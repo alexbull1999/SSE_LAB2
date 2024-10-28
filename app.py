@@ -56,17 +56,25 @@ def process_query(query):
     if "name" in query.lower():
         return "AlexTim"
     if "square" in query.lower():
-        return str(square_and_cube(numbers))
+        return str(find_perfect_square_and_cube(numbers))
     if "prime" in query.lower():
         return str(find_primes(numbers))
     return "Unknown"
 
 
-def square_and_cube(numbers):
+def square_and_cube(number):
+    root = round(number ** (1 / 6))
+    if root**6 == number:
+        return number
+    return False
+
+
+def find_perfect_square_and_cube(numbers):
+    perfect_numbers = []  # List to store prime numbers
     for number in numbers:
-        root = round(number ** (1 / 6))
-        if root**6 == number:
-            return number
+        if square_and_cube(number):
+            perfect_numbers.append(number)  # Add the prime number to the list
+    return perfect_numbers
 
 
 def extract_numbers_from_query(query):

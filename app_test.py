@@ -44,6 +44,12 @@ def both_square_and_cube():
         )
         == "729"
     )
+    assert (
+        process_query(
+            "square and a cube: 64, 729, 1261, 3025, 4520, 133, 1000"
+        )
+        == "64, 729"
+    )
 
 
 def subtract_two_numbers():
