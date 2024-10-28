@@ -19,3 +19,8 @@ def test_query_about_name():
 def test_addition_two_numbers():
     assert process_query("5 plus 5") == "10"
     assert process_query("7 plus 5") == "12"
+
+
+def largest_of_three_number():
+    assert process_query("largest: 67, 46, 1") == "67"
+    assert process_query("largest: 2, 5, 10") == "10"
