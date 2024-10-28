@@ -49,3 +49,8 @@ def both_square_and_cube():
 def subtract_two_numbers():
     assert process_query("10 minus 5") == "5"
     assert process_query("20 minus 10") == "10"
+
+
+def is_prime_numbers():
+    assert process_query("primes: 33, 78, 31, 23, 97") == "31, 23, 97"
+    assert process_query("primes: 15, 9, 11, 19, 5") == "11, 19, 5"

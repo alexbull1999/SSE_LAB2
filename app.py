@@ -57,7 +57,8 @@ def process_query(query):
         return "AlexTim"
     if "square" in query.lower():
         return str(square_and_cube(numbers))
-
+    if "prime" in query.lower():
+        return str(find_primes(numbers))
     return "Unknown"
 
 
@@ -71,6 +72,29 @@ def square_and_cube(numbers):
 def extract_numbers_from_query(query):
     numbers = re.findall(r"\d+", query)
     return list(map(int, numbers))
+
+
+def is_prime(num):
+    if num <= 1:  # 0 and 1 are not prime numbers
+        return False
+    if num <= 3:  # 2 and 3 are prime numbers
+        return True
+    if num % 2 == 0 or num % 3 == 0:  # Eliminate multiples of 2 and 3
+        return False
+
+    # Check for factors from 5 to the square root of num
+    for i in range(5, int(num**0.5) + 1, 6):
+        if num % i == 0 or num % (i + 2) == 0:
+            return False
+    return True
+
+
+def find_primes(numbers):
+    primes = []  # List to store prime numbers
+    for number in numbers:
+        if is_prime(number):
+            primes.append(number)  # Add the prime number to the list
+    return primes
 
 
 @app.route("/query", methods=["GET"])
