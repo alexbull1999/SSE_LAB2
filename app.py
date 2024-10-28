@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 import re
+import math
 
 app = Flask(__name__)
 
@@ -53,7 +54,17 @@ def process_query(query):
         return str(numbers[0] * numbers[1])
     if "name" in query.lower():
         return "AlexTim"
+    if "square" in query.lower():
+        return str(square_and_cube(numbers))
+
     return "Unknown"
+
+
+def square_and_cube(numbers):
+    for number in numbers:
+        root = round(number ** (1 / 6))
+        if root**6 == number:
+            return number
 
 
 def extract_numbers_from_query(query):

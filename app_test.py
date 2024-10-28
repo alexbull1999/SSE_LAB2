@@ -29,3 +29,18 @@ def largest_of_three_number():
 def multiply_two_numbers():
     assert process_query("5 multiplied 5") == "25"
     assert process_query("7 multiplied multiplied 9") == "63"
+
+
+def both_square_and_cube():
+    assert (
+        process_query(
+            "square and a cube: 64, 4911, 1261, 3025, 4520, 133, 1000"
+        )
+        == "64"
+    )
+    assert (
+        process_query(
+            "square and a cube: 729, 4911, 1261, 3025, 4520, 133, 1000"
+        )
+        == "729"
+    )
