@@ -25,7 +25,10 @@ def submit():
             repos_data = (
                 response.json()
             )  # data returned is a list of ‘repository’ entities
-            repos = jq.compile(".[].name").input(repos_data).all()
+            repos = [
+                {"name": repo["name"], "updated_at": repo["updated_at"]}
+                for repo in repos_data
+            ]
         return render_template(
             "gitdata.html", gitusername=input_gitusername, repos=repos
         )

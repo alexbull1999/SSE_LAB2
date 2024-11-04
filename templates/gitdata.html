@@ -3,8 +3,8 @@
 	<p>Please find below a list of your GitHub Repos:</p>
 	{% if repos %}
         <ul>
-            {% for repo_name in repos %}
-                <li>{{ repo_name }}</li>
+            {% for repo in repos %}
+                <li>{{ repo.name }} last updated at: {{ repo.updated_at }}</li>
             {% endfor %}
         </ul>
     {% else %}
