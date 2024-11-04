@@ -1,13 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Repositories for {{ gitusername }}</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+
+
 <body>
 	<h1>Hello {{gitusername}}!</h1>
 	<p>Please find below a list of your GitHub Repos:</p>
-	{% if repos %}
-        <ul>
-            {% for repo in repos %}
-                <li>{{ repo.name }} last updated at: {{ repo.updated_at }}</li>
-            {% endfor %}
-        </ul>
+	 {% if repos %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Repo Name</th>
+                    <th>Commit Hash</th>
+                    <th>Commit Message</th>
+                    <th>Commit Author</th>
+                    <th>Commit Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for repo in repos %}
+                    <tr>
+                        <td>{{ repo.name }}</td>
+                        <td>{{ repo.commit_hash }}</td>
+                        <td>{{ repo.commit_message }}</td>
+                        <td>{{ repo.commit_author }}</td>
+                        <td>{{ repo.commit_date }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     {% else %}
-        <p>No repositories found for user "{{gitusername}}" or an error occurred.</p>
+        <p>No repositories found for user "{{ gitusername }}" or an error occurred.</p>
     {% endif %}
 </body>
+</html>

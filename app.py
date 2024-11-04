@@ -29,8 +29,38 @@ def submit():
                 {"name": repo["name"], "updated_at": repo["updated_at"]}
                 for repo in repos_data
             ]
+
+            detailed_git = []
+            for repo in repos:
+                new_data = requests.get(
+                    f"https://api.github.com/repos/{input_gitusername}/{repo['name']}/commits"
+                )
+                if new_data.status_code == 200:
+                    commits = new_data.json()
+
+                    if commits:
+                        latest_commit = max(
+                            commits,
+                            key=lambda x: x["commit"]["author"]["date"],
+                        )
+                        detailed_git.append(
+                            {
+                                "name": repo["name"],
+                                "commit_hash": latest_commit["sha"],
+                                "commit_message": latest_commit["commit"][
+                                    "message"
+                                ],
+                                "commit_author": latest_commit["commit"][
+                                    "author"
+                                ]["name"],
+                                "commit_date": latest_commit["commit"][
+                                    "author"
+                                ]["date"],
+                            }
+                        )
+
         return render_template(
-            "gitdata.html", gitusername=input_gitusername, repos=repos
+            "gitdata.html", gitusername=input_gitusername, repos=detailed_git
         )
 
     if input_animal == "Goat" or input_animal == "goat":
