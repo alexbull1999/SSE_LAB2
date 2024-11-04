@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request
 import re
 import requests
-import jq
 
 app = Flask(__name__)
 
@@ -33,7 +32,8 @@ def submit():
             detailed_git = []
             for repo in repos:
                 new_data = requests.get(
-                    f"https://api.github.com/repos/{input_gitusername}/{repo['name']}/commits"
+                    f"https://api.github.com/repos/{input_gitusername}/"
+                    f"{repo['name']}/commits"
                 )
                 if new_data.status_code == 200:
                     commits = new_data.json()
