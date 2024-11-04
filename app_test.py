@@ -1,5 +1,5 @@
 from app import process_query
-
+from app import requests
 
 def test_knows_about_dinosaurs():
     assert (
