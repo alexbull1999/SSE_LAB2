@@ -24,6 +24,13 @@
 
 <body>
 	<h1>Hello {{gitusername}}!</h1>
+    <p>Here is your GitHub avatar:</p>
+    {% if avatar %}
+        <img src="{{ avatar }}" alt="GitHub Avatar" width="150" height="150">
+    {% else %}
+        <p>No avatar found for user "{{ gitusername }}" or an error occurred.</p>
+    {% endif %}
+
 	<p>Please find below a list of your GitHub Repos:</p>
 	 {% if repos %}
         <table>

@@ -16,6 +16,13 @@ def submit():
     input_animal = request.form.get("animal")
     input_gitusername = request.form.get("gitusername")
     if input_gitusername is not None:
+        avatar_response = requests.get(
+            f"https://api.github.com/users/{input_gitusername}"
+        )
+        if avatar_response.status_code == 200:
+            avatar_data = avatar_response.json()
+            avatar_url = avatar_data["avatar_url"]
+
         response = requests.get(
             f"https://api.github.com/users/{input_gitusername}/repos"
         )
@@ -59,8 +66,14 @@ def submit():
                             }
                         )
 
+            return render_template(
+                "gitdata.html",
+                gitusername=input_gitusername,
+                repos=detailed_git,
+                avatar=avatar_url,
+            )
         return render_template(
-            "gitdata.html", gitusername=input_gitusername, repos=detailed_git
+            "gitdata.html", gitusername=input_gitusername, repos=[]
         )
 
     if input_animal == "Goat" or input_animal == "goat":
