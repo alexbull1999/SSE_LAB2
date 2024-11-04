@@ -10,10 +10,13 @@ def hello_word():
     return render_template("index.html")
 
 
-@app.route("/submit", methods=["POST"])
-def submit():
-    input_name = request.form.get("name")
-    input_animal = request.form.get("animal")
+@app.route("/github")
+def github():
+    return render_template("github.html")
+
+
+@app.route("/githubusername", methods=["POST"])
+def githubusername():
     input_gitusername = request.form.get("gitusername")
     if input_gitusername is not None:
         avatar_response = requests.get(
@@ -76,6 +79,11 @@ def submit():
             "gitdata.html", gitusername=input_gitusername, repos=[]
         )
 
+
+@app.route("/submit", methods=["POST"])
+def submit():
+    input_name = request.form.get("name")
+    input_animal = request.form.get("animal")
     if input_animal == "Goat" or input_animal == "goat":
         return render_template(
             "goat.html", name=input_name, animal=input_animal
