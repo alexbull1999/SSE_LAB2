@@ -15,9 +15,7 @@ def submit():
     input_animal = request.form.get("animal")
     input_gitusername = request.form.get("gitusername")
     if input_gitusername is not None:
-        return render_template(
-            "hello.html", gitusername= input_gitusername
-        )
+        return render_template("hello.html", gitusername=input_gitusername)
     if input_animal == "Goat" or input_animal == "goat":
         return render_template(
             "goat.html", name=input_name, animal=input_animal
