@@ -1,0 +1,13 @@
+<body>
+	<h1>Hello {{gitusername}}!</h1>
+	<p>Please find below a list of your GitHub Repos:</p>
+	{% if repos %}
+        <ul>
+            {% for repo_name in repos %}
+                <li>{{ repo_name }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No repositories found for user "{{gitusername}}" or an error occurred.</p>
+    {% endif %}
+</body>

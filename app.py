@@ -1,5 +1,7 @@
 from flask import Flask, render_template, request
 import re
+import requests
+import jq
 
 app = Flask(__name__)
 
@@ -15,7 +17,19 @@ def submit():
     input_animal = request.form.get("animal")
     input_gitusername = request.form.get("gitusername")
     if input_gitusername is not None:
-        return render_template("hello.html", gitusername=input_gitusername)
+        response = requests.get(
+            f"https://api.github.com/users/{input_gitusername}/repos"
+        )
+        repos = []
+        if response.status_code == 200:
+            repos_data = (
+                response.json()
+            )  # data returned is a list of ‘repository’ entities
+            repos = jq.compile(".[].name").input(repos_data).all()
+        return render_template(
+            "gitdata.html", gitusername=input_gitusername, repos=repos
+        )
+
     if input_animal == "Goat" or input_animal == "goat":
         return render_template(
             "goat.html", name=input_name, animal=input_animal
